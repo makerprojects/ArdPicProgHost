@@ -1,0 +1,18 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+ArdPicProgHost
+</name>
+</assembly>
+<members>
+<member name="M:ArdPicProgHost.frmUI_ArdPicProgHost.MyForm_Initialize">
+	<summary>
+ This method is used to initialize the application. It will collect all
+ available COM ports in a list box. If no ports were found then the program
+ will stop.
+ </summary>
+	<remarks></remarks>
+</member>
+</members>
+</doc>

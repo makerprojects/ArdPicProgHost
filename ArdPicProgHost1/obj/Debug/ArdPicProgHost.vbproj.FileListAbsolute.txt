@@ -1,0 +1,11 @@
+C:\Users\Groggy\Documents\Visual Studio 2008\Projects\ArdPicProgHost\ArdPicProgHost1\bin\Debug\ArdPicProgHost.exe
+C:\Users\Groggy\Documents\Visual Studio 2008\Projects\ArdPicProgHost\ArdPicProgHost1\bin\Debug\ArdPicProgHost.pdb
+C:\Users\Groggy\Documents\Visual Studio 2008\Projects\ArdPicProgHost\ArdPicProgHost1\bin\Debug\ArdPicProgHost.xml
+C:\Users\Groggy\Documents\Visual Studio 2008\Projects\ArdPicProgHost\ArdPicProgHost1\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Groggy\Documents\Visual Studio 2008\Projects\ArdPicProgHost\ArdPicProgHost1\obj\Debug\ArdPicProgHost.frmUI_ArdPicProgHost.resources
+C:\Users\Groggy\Documents\Visual Studio 2008\Projects\ArdPicProgHost\ArdPicProgHost1\obj\Debug\ArdPicProgHost.LED.resources
+C:\Users\Groggy\Documents\Visual Studio 2008\Projects\ArdPicProgHost\ArdPicProgHost1\obj\Debug\ArdPicProgHost.Resources.resources
+C:\Users\Groggy\Documents\Visual Studio 2008\Projects\ArdPicProgHost\ArdPicProgHost1\obj\Debug\ArdPicProgHost.vbproj.GenerateResource.Cache
+C:\Users\Groggy\Documents\Visual Studio 2008\Projects\ArdPicProgHost\ArdPicProgHost1\obj\Debug\ArdPicProgHost.exe
+C:\Users\Groggy\Documents\Visual Studio 2008\Projects\ArdPicProgHost\ArdPicProgHost1\obj\Debug\ArdPicProgHost.xml
+C:\Users\Groggy\Documents\Visual Studio 2008\Projects\ArdPicProgHost\ArdPicProgHost1\obj\Debug\ArdPicProgHost.pdb
