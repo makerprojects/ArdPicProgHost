@@ -1,7 +1,7 @@
 ' This is the host application for evaluating the Arduino Pic Programmer
 ' 
 ' Gregor Schlechtriem
-' Copyright (C) 2014
+' Copyright (C) 2014 - 2016
 ' www.pikoder.com
 '
 ' This program is free software: you can redistribute it and/or modify
@@ -18,6 +18,7 @@
 ' of this code to your application and usage.
 ' 
 ' Documentation of changes:
+' Last change: 01/26/2016 : migrated source to VB 2013 and fixed a bug in detecting a device
 ' Last change: 11/02/2014 : fixed bugs in COM detection
 ' Last change: 01/11/2014 : fixed bugs in Intel hex file export (checksum calculation, format for EEPROM data)
 '
@@ -140,7 +141,7 @@ Friend Class frmUI_ArdPicProgHost
                 'retrieve channel information first to make sure that connection is available
                 Call mySerialLink.SendDataToSerial("DEVICE" & vbCrLf)
                 Call mySerialLink.GetResponse(strChannelBuffer, ".")
-                If ((strChannelBuffer <> "TimeOut") And Not (InStr(1, strChannelBuffer, "ERROR"))) Then 'catch ERROR conditions
+                If ((strChannelBuffer <> "TimeOut") And Not (InStr(1, strChannelBuffer, "ERROR", 1) > 0)) Then 'catch ERROR conditions
                     'parse string for information received
                     Call ParseForArgument(strChannelBuffer, lDeviceName.Text, "DeviceName")
                     Call ParseForArgument(strChannelBuffer, lProgramRange.Text, "ProgramRange")

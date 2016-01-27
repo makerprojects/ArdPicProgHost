@@ -12,7 +12,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("")> 
 <Assembly: AssemblyCompany("")> 
 <Assembly: AssemblyProduct("ArdPicProgHost")> 
-<Assembly: AssemblyCopyright("Copyright ©  2014-15 Gregor Schlechtriem")> 
+<Assembly: AssemblyCopyright("Copyright ©  2014-16 Gregor Schlechtriem")> 
 <Assembly: AssemblyTrademark("www.pikoder.com")> 
 
 <Assembly: ComVisible(True)> 
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' übernehmen, indem Sie "*" eingeben:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("0.2.5.0")> 
-<Assembly: AssemblyFileVersion("0.2.5.0")> 
+<Assembly: AssemblyVersion("0.2.6.0")> 
+<Assembly: AssemblyFileVersion("0.2.6.0")> 

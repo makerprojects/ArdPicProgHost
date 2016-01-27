@@ -23,7 +23,7 @@
     <ManifestCertificateThumbprint>2F199CFC52F9D17FF3F843281B1719EC1F7EA48B</ManifestCertificateThumbprint>
     <ManifestKeyFile>ArdPicProgHost_TemporaryKey.pfx</ManifestKeyFile>
     <GenerateManifests>true</GenerateManifests>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>

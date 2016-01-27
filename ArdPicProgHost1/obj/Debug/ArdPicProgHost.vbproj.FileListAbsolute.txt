@@ -9,3 +9,17 @@ C:\Users\Groggy\Documents\Visual Studio 2008\Projects\ArdPicProgHost\ArdPicProgH
 C:\Users\Groggy\Documents\Visual Studio 2008\Projects\ArdPicProgHost\ArdPicProgHost1\obj\Debug\ArdPicProgHost.exe
 C:\Users\Groggy\Documents\Visual Studio 2008\Projects\ArdPicProgHost\ArdPicProgHost1\obj\Debug\ArdPicProgHost.xml
 C:\Users\Groggy\Documents\Visual Studio 2008\Projects\ArdPicProgHost\ArdPicProgHost1\obj\Debug\ArdPicProgHost.pdb
+C:\Users\Gego\Documents\GitHub\ArdPicProgHost\ArdPicProgHost1\obj\Debug\ArdPicProgHost.exe
+C:\Users\Gego\Documents\GitHub\ArdPicProgHost\ArdPicProgHost1\obj\Debug\ArdPicProgHost.xml
+C:\Users\Gego\Documents\GitHub\ArdPicProgHost\ArdPicProgHost1\obj\Debug\ArdPicProgHost.pdb
+C:\Users\Gego\Documents\GitHub\ArdPicProgHost\ArdPicProgHost1\obj\Debug\ArdPicProgHost.frmUI_ArdPicProgHost.resources
+C:\Users\Gego\Documents\GitHub\ArdPicProgHost\ArdPicProgHost1\obj\Debug\ArdPicProgHost.LED.resources
+C:\Users\Gego\Documents\GitHub\ArdPicProgHost\ArdPicProgHost1\obj\Debug\ArdPicProgHost.Resources.resources
+C:\Users\Gego\Documents\GitHub\ArdPicProgHost\ArdPicProgHost1\obj\Debug\ArdPicProgHost.vbproj.GenerateResource.Cache
+C:\Users\Gego\Documents\GitHub\ArdPicProgHost\ArdPicProgHost1\bin\Debug\ArdPicProgHost.exe.manifest
+C:\Users\Gego\Documents\GitHub\ArdPicProgHost\ArdPicProgHost1\bin\Debug\ArdPicProgHost.application
+C:\Users\Gego\Documents\GitHub\ArdPicProgHost\ArdPicProgHost1\bin\Debug\ArdPicProgHost.exe
+C:\Users\Gego\Documents\GitHub\ArdPicProgHost\ArdPicProgHost1\bin\Debug\ArdPicProgHost.pdb
+C:\Users\Gego\Documents\GitHub\ArdPicProgHost\ArdPicProgHost1\bin\Debug\ArdPicProgHost.xml
+C:\Users\Gego\Documents\GitHub\ArdPicProgHost\ArdPicProgHost1\obj\Debug\ArdPicProgHost.exe.manifest
+C:\Users\Gego\Documents\GitHub\ArdPicProgHost\ArdPicProgHost1\obj\Debug\ArdPicProgHost.application
