@@ -256,7 +256,7 @@ Friend Class frmUI_ArdPicProgHost
     Private Function Decimal2Hex(ByVal Dec As Integer) As String
         Return Dec.ToString("X4")
     End Function
-    Private Sub UpdateMemoryWindows()
+    Private Sub UpdateMemoryWindows(ByVal sMemMessage As String, ByVal sEEPMessage As String)
         Dim boolLedStatus = True
         Dim intUpdateWindow As Integer = 3
         Dim intStartOfLine As Integer = 0
@@ -284,13 +284,13 @@ Friend Class frmUI_ArdPicProgHost
                     intRefreshCounter = 0
                     Led2.State = boolLedStatus
                     boolLedStatus = Not boolLedStatus
-                    Status.Text = "Reading address " & Decimal2Hex(intMemAdress)
+                    Status.Text = sMemMessage & Decimal2Hex(intMemAdress)
                     Me.Led2.Refresh()
                     Me.Status.Refresh()
                 End If
             End If
         End While
-        Status.Text = "Reading EEPROM"
+        Status.Text = sEEPMessage
         Me.Status.Refresh()
         Call mySerialLink.SendDataToSerial("READ" & " " & lEEPROMRange.Text & vbCrLf)
         Call mySerialLink.GetResponse(strDataMemory, ".")
@@ -321,7 +321,7 @@ Friend Class frmUI_ArdPicProgHost
         If boolDeviceFound Then
             Status.Text = "Reading"
             Me.Status.Refresh()
-            UpdateMemoryWindows()
+            UpdateMemoryWindows("Reading address ", "Reading EEPROM")
             Call mySerialLink.SendDataToSerial("DEVICE" & vbCrLf)
             Call mySerialLink.GetResponse(strChannelBuffer, ".")
             If ((strChannelBuffer <> "TimeOut") And Not (InStr(1, strChannelBuffer, "ERROR"))) Then 'catch ERROR conditions
@@ -346,7 +346,7 @@ Friend Class frmUI_ArdPicProgHost
             If strChannelBuffer = "TimeOut" Then 'Error message 
                 MsgBox("Time out error erasing device - Please retry!", MessageBoxButtons.OK, "ArdPigProgHost: Communication time out")
             Else
-                UpdateMemoryWindows()
+                UpdateMemoryWindows("Erasing address ", "Erasing EEPROM")
                 Call mySerialLink.SendDataToSerial("DEVICE" & vbCrLf)
                 Call mySerialLink.GetResponse(strChannelBuffer, ".")
                 If ((strChannelBuffer <> "TimeOut") And Not (InStr(1, strChannelBuffer, "ERROR"))) Then 'catch ERROR conditions
@@ -403,7 +403,7 @@ Friend Class frmUI_ArdPicProgHost
             Call mySerialLink.SendDataToSerial(strCommandString) 'flush out last string
             Call mySerialLink.GetResponse(strChannelBuffer, "OK")
             'update window after programming 
-            Call UpdateMemoryWindows()
+            Call UpdateMemoryWindows("Writing address ", "Writing EEPROM")
             Call mySerialLink.SendDataToSerial("DEVICE" & vbCrLf)
             Call mySerialLink.GetResponse(strChannelBuffer, ".")
             If ((strChannelBuffer <> "TimeOut") And Not (InStr(1, strChannelBuffer, "ERROR"))) Then 'catch ERROR conditions
