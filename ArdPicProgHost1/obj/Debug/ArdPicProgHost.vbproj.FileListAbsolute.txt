@@ -12,3 +12,4 @@ C:\Users\Gego\Documents\GitHub\ArdPicProgHost\ArdPicProgHost1\obj\Debug\ArdPicPr
 C:\Users\Gego\Documents\GitHub\ArdPicProgHost\ArdPicProgHost1\obj\Debug\ArdPicProgHost.exe
 C:\Users\Gego\Documents\GitHub\ArdPicProgHost\ArdPicProgHost1\obj\Debug\ArdPicProgHost.xml
 C:\Users\Gego\Documents\GitHub\ArdPicProgHost\ArdPicProgHost1\obj\Debug\ArdPicProgHost.pdb
+C:\Users\Gego\Documents\GitHub\ArdPicProgHost\ArdPicProgHost1\bin\Debug\ArdPicProgHost.exe.config

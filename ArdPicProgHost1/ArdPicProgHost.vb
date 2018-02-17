@@ -1,7 +1,7 @@
 ' This is the host application for evaluating the Arduino Pic Programmer
 ' 
 ' Gregor Schlechtriem
-' Copyright (C) 2014 - 2016
+' Copyright (C) 2014 - 2018
 ' www.pikoder.com
 '
 ' This program is free software: you can redistribute it and/or modify
@@ -18,6 +18,7 @@
 ' of this code to your application and usage.
 ' 
 ' Documentation of changes:
+' Last change: 02/11/2018 : improved processing of PIC12F629, 630, 675 and 676
 ' Last change: 01/26/2016 : migrated source to VB 2013 and fixed a bug in detecting a device
 ' Last change: 11/02/2014 : fixed bugs in COM detection
 ' Last change: 01/11/2014 : fixed bugs in Intel hex file export (checksum calculation, format for EEPROM data)
@@ -151,11 +152,14 @@ Friend Class frmUI_ArdPicProgHost
                     Call ParseForArgument(strChannelBuffer, lConfigWord.Text, "ConfigWord")
                     Call ParseForArgument(strChannelBuffer, lConfigurationRange.Text, "ConfigRange")
                     Call ParseForRange(lConfigurationRange.Text, intConfigStart, intConfigEnd)
-                    If lDeviceName.Text = "PIC12F675" Then
+                    If ((lDeviceName.Text = "PIC12F629") Or (lDeviceName.Text = "PIC12F675") Or (lDeviceName.Text = "PIC12F675") Or (lDeviceName.Text = "PIC12F676")) Then
                         Call mySerialLink.SendDataToSerial("READ" & " " & "03FF" & vbCrLf)
                         Call mySerialLink.GetResponse(strProgramMemory, "." & vbCrLf)
                         If strProgramMemory <> "TimeOut" And strProgramMemory.Length = 13 Then
                             lOsccal.Text = strProgramMemory.Substring(4, 4)
+                            If (lOsccal.Text(0) <> "3" Or lOsccal.Text(1) < "4" Or lOsccal.Text(1) > "7") Then
+                                MsgBox("OSCAL error, device cannot be programmed!", MessageBoxButtons.OK, "ArdPigProgHost: Device Error")
+                            End If
                         End If
                     End If
                     boolDeviceFound = True
@@ -369,6 +373,7 @@ Friend Class frmUI_ArdPicProgHost
         Dim intLineEndPointer As Integer = 0
         Dim strCommandString As String = ""
         Dim strChannelBuffer As String = ""
+        Dim configString As String = ""
         If boolSourceFileImportedOK And boolDeviceFound Then
             Led2.Color = LED.LEDColorSelection.LED_Red
             Status.Text = "Writing"
@@ -376,34 +381,47 @@ Friend Class frmUI_ArdPicProgHost
             For Each bByte As Char In strWriteFileFormat
                 If bByte = ":" Then
                     If strCommandString <> "" Then
-                        Call mySerialLink.SendDataToSerial(strCommandString)
-                        Call mySerialLink.GetResponse(strChannelBuffer, "OK")
-                        If (InStr(1, strChannelBuffer, "ERROR")) Then
-                            MsgBox("Write error to device - Please erase device first!", MessageBoxButtons.OK, "ArdPigProgHost: Write Error")
-                            Led2.Blink = False
-                            Led2.Color = LED.LEDColorSelection.LED_Green
-                            Status.Text = "Connected"
-                            Exit Sub
+                        If (InStr(1, strCommandString, "2007")) Then
+                            configString = strCommandString
+                        Else
+                            Call mySerialLink.SendDataToSerial(strCommandString)
+                            Call mySerialLink.GetResponse(strChannelBuffer, "OK")
+                            If (InStr(1, strChannelBuffer, "ERROR")) Then
+                                MsgBox("Write error to device - Please erase device first!", MessageBoxButtons.OK, "ArdPigProgHost: Write Error")
+                                Led2.Blink = False
+                                Led2.Color = LED.LEDColorSelection.LED_Green
+                                Status.Text = "Connected"
+                                Exit Sub
+                            End If
+                            intRefreshCounter += 1
+                            If intRefreshCounter = 4 Then
+                                Status.Text = "Writing address " & Mid(strCommandString, 7, 4)
+                                Led2.State = boolLedStatus
+                                boolLedStatus = Not boolLedStatus
+                                Me.Status.Refresh()
+                                Me.Led2.Refresh()
+                                intRefreshCounter = 0
+                            End If
                         End If
-                        intRefreshCounter += 1
-                        If intRefreshCounter = 4 Then
-                            Status.Text = "Writing address " & Mid(strCommandString, 7, 4)
-                            Led2.State = boolLedStatus
-                            boolLedStatus = Not boolLedStatus
-                            Me.Status.Refresh()
-                            Me.Led2.Refresh()
-                            intRefreshCounter = 0
-                        End If
+                        strCommandString = "WRITE "
                     End If
-                    strCommandString = "WRITE "
                 Else
                     strCommandString = strCommandString & bByte
                 End If
             Next
             Call mySerialLink.SendDataToSerial(strCommandString) 'flush out last string
             Call mySerialLink.GetResponse(strChannelBuffer, "OK")
+            If (InStr(1, strChannelBuffer, "ERROR")) Then
+                MsgBox("Write error to device - Please erase device first!", MessageBoxButtons.OK, "ArdPigProgHost: Write Error")
+            Else
+                Call mySerialLink.SendDataToSerial(configString) 'write config word as last command
+                Call mySerialLink.GetResponse(strChannelBuffer, "OK")
+                If (InStr(1, strChannelBuffer, "ERROR")) Then
+                    MsgBox("Write error to device - Failed to write Configuration Word!", MessageBoxButtons.OK, "ArdPigProgHost: Write Error")
+                End If
+            End If
             'update window after programming 
-            Call UpdateMemoryWindows("Writing address ", "Writing EEPROM")
+            Call UpdateMemoryWindows("Reading address ", "Reading EEPROM")
             Call mySerialLink.SendDataToSerial("DEVICE" & vbCrLf)
             Call mySerialLink.GetResponse(strChannelBuffer, ".")
             If ((strChannelBuffer <> "TimeOut") And Not (InStr(1, strChannelBuffer, "ERROR"))) Then 'catch ERROR conditions

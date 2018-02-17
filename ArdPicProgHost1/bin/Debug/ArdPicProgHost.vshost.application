@@ -4,17 +4,17 @@
   <description asmv2:publisher="www.picoder.com" asmv2:product="Arduino Pic Programmer" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <deployment install="true" mapFileExtensions="true" />
   <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
-    <framework targetVersion="4.0" profile="Full" supportedRuntime="4.0.30319" />
+    <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="ArdPicProgHost.exe.manifest" size="3573">
+    <dependentAssembly dependencyType="install" codebase="ArdPicProgHost.exe.manifest" size="4012">
       <assemblyIdentity name="ArdPicProgHost.exe" version="0.2.2.1" publicKeyToken="0000000000000000" language="en-US" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>wutAMSrvl8rYY3cNLAfocVuBnJk=</dsig:DigestValue>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>OHWam45mUUQu0Y0gYMXsEg2YRqQ/38YlK+IiD5ZfUJ8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
