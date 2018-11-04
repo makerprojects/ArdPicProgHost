@@ -403,8 +403,8 @@ Friend Class frmUI_ArdPicProgHost
                                 intRefreshCounter = 0
                             End If
                         End If
-                        strCommandString = "WRITE "
                     End If
+                    strCommandString = "WRITE "
                 Else
                     strCommandString = strCommandString & bByte
                 End If
@@ -600,7 +600,7 @@ Friend Class frmUI_ArdPicProgHost
 
         Try
             HexFileName.Text = dlgSaveFile.FileName
-            My.Computer.FileSystem.WriteAllText(dlgSaveFile.FileName, strExportIntelHex, False)
+            My.Computer.FileSystem.WriteAllText(dlgSaveFile.FileName, strExportIntelHex, False, New System.Text.UTF8Encoding(False))
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Cannot create file.", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
